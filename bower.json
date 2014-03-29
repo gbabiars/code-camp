@@ -12,8 +12,9 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "dependencies": {
     "ember": "1.5.0-beta.4",
-    "ember-data": "1.0.0-beta.7"
+    "ember-data": "1.0.0-beta.7",
+    "bootstrap": "~3.1.1"
   }
 }

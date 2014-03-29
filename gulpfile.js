@@ -45,12 +45,14 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('connect', connect.server({
-    root: ['dist']
+    root: ['dist'],
+    livereload: false
 }));
 
 gulp.task('watch', function() {
     gulp.watch('app/templates/**/*.hbs', ['templates']);
     gulp.watch('app/**/*.js', ['scripts']);
+    gulp.watch('dist/**', ['connect']);
 });
 
 gulp.task('default', [
