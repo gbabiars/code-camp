@@ -1,0 +1,1 @@
+window.CC = Em.Application.create();
