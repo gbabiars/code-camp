@@ -1,1 +1,10 @@
 <h1>Sessions</h1>
+
+<ul>
+{{#each session in model}}
+    <li>
+        {{link-to session.title "session" session}}
+        {{session.description}}
+    </li>
+{{/each}}
+</ul>

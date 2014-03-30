@@ -52,7 +52,6 @@ gulp.task('connect', connect.server({
 gulp.task('watch', function() {
     gulp.watch('app/templates/**/*.hbs', ['templates']);
     gulp.watch('app/**/*.js', ['scripts']);
-    gulp.watch('dist/**', ['connect']);
 });
 
 gulp.task('default', [
