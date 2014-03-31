@@ -4,7 +4,9 @@
 {{#each session in model}}
     <li>
         {{link-to session.title "session" session}}
-        {{session.description}}
+        <p>
+            {{{session.description}}}
+        </p>
     </li>
 {{/each}}
 </ul>

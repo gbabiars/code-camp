@@ -12,12 +12,24 @@ var jsDependencies = [
     'bower_components/ember-data/ember-data.js'
 ];
 
-var assets = jsDependencies.concat('app/index.html');
+var cssDependencies = [
+    'bower_components/bootstrap/dist/css/*.css'
+];
+
+var fontDependencies = [
+    'bower_components/bootstrap/dist/fonts/**'
+];
 
 gulp.task('copy-assets', function() {
-    gulp.src(assets)
+    gulp.src(jsDependencies)
+        .pipe(gulp.dest('dist/js'));
+    gulp.src(cssDependencies)
+        .pipe(gulp.dest('dist/css'));
+    gulp.src(fontDependencies)
+        .pipe(gulp.dest('dist/fonts'));
+    gulp.src('app/index.html')
         .pipe(gulp.dest('dist'));
-})
+});
 
 gulp.task('lint', function() {
     gulp.src(['app/**/*.js', '!app/templates.js'])
@@ -41,7 +53,7 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
     gulp.src(['app/app.js', 'app/**/*.js'])
         .pipe(concat('app.js'))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('connect', connect.server({
