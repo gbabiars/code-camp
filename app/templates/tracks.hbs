@@ -1,0 +1,12 @@
+<h1>Tracks</h1>
+
+<ul>
+    {{#each track in model}}
+        <li>
+            {{track.name}} - {{track.sessions.length}} Sessions
+            <p>
+                {{{track.description}}}
+            </p>
+        </li>
+    {{/each}}
+</ul>
