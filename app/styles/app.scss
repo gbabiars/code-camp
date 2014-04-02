@@ -1,0 +1,29 @@
+$sideLength: 32px;
+
+.track-square {
+  display: inline-block;
+  width: $sideLength;
+  height: $sideLength;
+  border-radius: 5px;
+  margin-right: 15px;
+
+  &.net {
+    background-color: #68217a;
+  }
+
+  &.agile, &.database, &.design, &.devops, &.html, &.javascript, &.mobile, &.other, &.qa {
+    background-color: #c3c3c3;
+  }
+
+  &.java {
+    background-color: #ff0000;
+  }
+
+  &.python {
+    background-color: #376a94;
+  }
+
+  &.ruby {
+    background-color: #7d0000;
+  }
+}

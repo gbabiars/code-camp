@@ -1,12 +1,28 @@
-<h1>Tracks</h1>
+<div class="container">
+    <h1>Sessions By Track</h1>
 
-<ul>
-    {{#each track in model}}
-        <li>
-            {{track.name}} - {{track.sessions.length}} Sessions
+    {{#each track in controller}}
+        <div>
+            <h2>{{track-square track=track.name}} {{track.name}}</h2>
+
             <p>
                 {{{track.description}}}
             </p>
-        </li>
+
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>State</th>
+                    <th>Session</th>
+                </tr>
+                {{#each session in track.sessions}}
+                    <tr>
+                        <td>{{session-status-image status=session.status}}</td>
+                        <td>{{session.title}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+
+        </div>
     {{/each}}
-</ul>
+</div>
+

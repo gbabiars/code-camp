@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     connect = require('gulp-connect'),
     templates = require('./gulp_ember_templates');
 
@@ -44,10 +45,11 @@ gulp.task('templates', function() {
         .pipe(gulp.dest('app'));
 });
 
-gulp.task('sass', function() {
-    gulp.src('app/styles/app.sass')
+gulp.task('styles', function() {
+    gulp.src('app/styles/**/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('app/styles'));
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('scripts', function() {
@@ -64,13 +66,14 @@ gulp.task('connect', connect.server({
 gulp.task('watch', function() {
     gulp.watch('app/templates/**/*.hbs', ['templates']);
     gulp.watch('app/**/*.js', ['scripts']);
+    gulp.watch('app/styles/**/*.sass', ['styles']);
 });
 
 gulp.task('default', [
     'lint',
     'templates',
     'scripts',
-    'sass',
+    'styles',
     'copy-assets',
     'connect',
     'watch'

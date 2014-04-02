@@ -8,6 +8,7 @@
         description: attr(),
         time: attr('date'),
         room: attr(),
+        status: attr(),
 
         track: belongsTo('track'),
         speaker: belongsTo('user')
