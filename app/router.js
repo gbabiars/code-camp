@@ -3,4 +3,5 @@ CC.Router.map(function() {
     this.resource('session', { path: 'session/:session_id' });
     this.resource('speakers');
     this.resource('tracks');
+    this.resource('schedule');
 });

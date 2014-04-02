@@ -6,7 +6,7 @@
     CC.Session = DS.Model.extend({
         title: attr(),
         description: attr(),
-        time: attr('date'),
+        time: attr(),
         room: attr(),
         status: attr(),
 
