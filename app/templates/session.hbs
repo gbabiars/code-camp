@@ -2,6 +2,12 @@
 
 <h3>{{model.track.name}}</h3>
 
+<ul>
+{{#each presenter in model.presenters}}
+    <li>{{presenter.name}}</li>
+{{/each}}
+</ul>
+
 <p>
     {{{model.description}}}
 </p>

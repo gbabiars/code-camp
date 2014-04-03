@@ -1,17 +1,19 @@
 (function() {
 
     var attr = DS.attr,
+        hasMany = DS.hasMany,
         belongsTo = DS.belongsTo;
 
     CC.Session = DS.Model.extend({
         title: attr(),
         description: attr(),
-        time: attr(),
+        startTime: attr('date'),
+        endTime: attr('date'),
         room: attr(),
         status: attr(),
 
         track: belongsTo('track'),
-        speaker: belongsTo('user')
+        presenters: hasMany('user')
     });
 
 }());

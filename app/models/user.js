@@ -4,8 +4,7 @@
 
     CC.User = DS.Model.extend({
         name: attr(),
-        description: attr(),
-        cell: attr(),
+        biography: attr(),
         twitter: attr(),
         facebook: attr(),
         speakerRate: attr(),
