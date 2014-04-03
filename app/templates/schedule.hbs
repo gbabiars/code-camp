@@ -2,10 +2,22 @@
 
     <h1>Schedule</h1>
 
-    {{#each grouping in groupedSessions}}
+    {{#each group in groupedSessions}}
+
         <div>
-            <h3>{{grouping.time}}</h3>
+
+            <h3>{{friendly-time group.startTime}} - {{friendly-time group.endTime}}</h3>
+
+            {{#each session in group.sessions}}
+
+                <div class="card">
+                    {{session.title}}
+                </div>
+
+            {{/each}}
+
         </div>
+
     {{/each}}
 
 </div>

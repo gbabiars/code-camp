@@ -3,22 +3,30 @@ CC.ScheduleController = Em.ArrayController.extend({
         var result = Em.A([]),
             sessions = this.get('model');
 
-        sessions.forEach(function(session) {
-            var time = session.get('time');
+        sessions
+            .filter(function(s) {
+                return s.get('startTime') && s.get('endTime');
+            })
+            .forEach(function(session) {
 
-            if(result.anyBy('time', time)) {
-                result.findBy('time', time).sessions.push(session);
-            } else {
-                result.addObject({
-                    time: time,
-                    sessions: [session]
+                var existingGroup = result.find(function(g) {
+                    return g.startTime.getTime() === session.get('startTime').getTime() &&
+                        g.endTime.getTime() === session.get('endTime').getTime();
                 });
-            }
-        });
 
-        console.log(result);
+                if(existingGroup) {
+                    existingGroup.sessions.push(session);
+                } else {
+                    result.push({
+                        startTime: session.get('startTime'),
+                        endTime: session.get('endTime'),
+                        sessions: [session]
+                    });
+                }
 
-        return result;
+            });
+
+        return result.sortBy('startTime');
 
     }.property('model')
 });
