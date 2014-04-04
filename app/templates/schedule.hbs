@@ -13,11 +13,16 @@
                 {{#each session in group.sessions}}
 
                     <div class="card">
-                        <div>{{session.title}}</div>
+                        <div class="hide-text-overflow">
+                            <span>{{session.title}}</span>
+                        </div>
                         <div>
                             {{#each presenter in session.presenters}}
                                 {{link-to presenter.name "speaker" presenter}}
                             {{/each}}
+                        </div>
+                        <div>
+                            {{track-square track=session.track.name}}
                         </div>
                     </div>
 

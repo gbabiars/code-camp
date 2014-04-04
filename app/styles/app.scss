@@ -1,3 +1,11 @@
+.hide-text-overflow {
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 $sideLength: 32px;
 
 .track-square {
@@ -34,7 +42,9 @@ $sideLength: 32px;
 }
 
 .card {
-  width: 18%;
+  display: block;
+  max-width: 18%;
+  min-width: 200px;
   border: 1px solid #c7c7c7;
   border-radius: 5px;
   margin: 5px;
