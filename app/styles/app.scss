@@ -27,3 +27,16 @@ $sideLength: 32px;
     background-color: #7d0000;
   }
 }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 18%;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
