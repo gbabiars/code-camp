@@ -1,1 +1,36 @@
 <h1>Speakers</h1>
+
+<div>
+
+    {{#each speaker in controller}}
+        <div class="presenter">
+
+            <h3>{{speaker.name}}</h3>
+            {{#link-to "speaker" speaker}}
+                More on {{speaker.name}}
+            {{/link-to}}
+
+            <div>
+                <h4>Sessions</h4>
+                {{#each session in speaker.sessions}}
+                    <div class="presenter-session">
+                        <div>
+                            <label>Track:</label>
+                            <span>{{session.track.name}}</span>
+                        </div>
+                        <div>
+                            <label>Title:</label>
+                            <span>{{session.title}}</span>
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <span>{{{session.description}}}</span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+        </div>
+    {{/each}}
+
+</div>

@@ -1,6 +1,7 @@
 (function() {
 
-    var attr = DS.attr;
+    var attr = DS.attr,
+        hasMany = DS.hasMany;
 
     CC.User = DS.Model.extend({
         name: attr(),
@@ -9,7 +10,9 @@
         facebook: attr(),
         speakerRate: attr(),
         slideShare: attr(),
-        blog: attr()
+        blog: attr(),
+
+        sessions: hasMany('session')
     });
 
 }());
