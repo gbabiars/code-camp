@@ -1,30 +1,52 @@
-<div class="container">
-    <h1>Sessions By Track</h1>
+<h1>Sessions By Track</h1>
 
-    {{#each track in controller}}
-    <div>
-        <h2>{{track-square track=track.name}} {{track.name}}</h2>
-
-        <p>
-            {{{track.description}}}
-        </p>
-
-        <table class="table table-bordered table-hover">
-            <tr>
-                <th>State</th>
-                <th>Session</th>
-                <th></th>
-            </tr>
-            {{#each session in track.sessions}}
-            <tr>
-                <td>{{session-status-image status=session.status}}</td>
-                <td>{{session.title}}</td>
-                <td>{{link-to "More Info" "session" session}}</td>
-            </tr>
-            {{/each}}
-        </table>
-
-    </div>
-    {{/each}}
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td><img src="/images/suggested.png" /></td>
+            <td>Needs a Presenter</td>
+            <td>meaning it's a good idea, but nobody has yet stepped up to the plate to present that session</td>
+            <td>{{toggle-button isDisplayed=displaySuggested}}</td>
+        </tr>
+        <tr>
+            <td><img src="/images/pending.png"/></td>
+            <td>Pending Approval</td>
+            <td>meaning that someone expressed interest in presenting but it has not yet been approved.</td>
+            <td>{{toggle-button isDisplayed=displayPending}}</td>
+        </tr>
+        <tr>
+            <td><img src="/images/approved.png"/></td>
+            <td>Approved Session</td>
+            <td>meaning there is a confirmed speaker for the session</td>
+            <td>{{toggle-button isDisplayed=displayApproved}}</td>
+        </tr>
+    </table>
 </div>
 
+{{#each track in controller}}
+<div>
+    <h2>{{track-square track=track.name}} {{track.name}}</h2>
+
+    <p>
+        {{{track.description}}}
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>State</th>
+            <th>Session</th>
+            <th></th>
+        </tr>
+        {{#each session in track.sessions itemController="trackSessionItem"}}
+            {{#if isVisible}}
+                <tr>
+                    <td>{{session-status-image status=session.status}}</td>
+                    <td>{{session.title}}</td>
+                    <td>{{link-to "More Info" "session" session}}</td>
+                </tr>
+            {{/if}}
+        {{/each}}
+    </table>
+
+</div>
+{{/each}}
