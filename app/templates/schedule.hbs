@@ -1,37 +1,50 @@
-<div class="container">
+<h1>Schedule</h1>
 
-    <h1>Schedule</h1>
+{{#each group in groupedSessions}}
 
-    {{#each group in groupedSessions}}
+    <div>
 
-        <div>
+        <h3>{{friendly-time group.startTime}} - {{friendly-time group.endTime}}</h3>
 
-            <h3>{{friendly-time group.startTime}} - {{friendly-time group.endTime}}</h3>
+        <div class="card-container">
 
-            <div class="card-container">
+            {{#each session in group.sessions}}
 
-                {{#each session in group.sessions}}
-
-                    <div class="card">
-                        <div class="hide-text-overflow">
-                            <span>{{session.title}}</span>
+                <div class="card">
+                    <div class="hide-text-overflow">
+                        <span>{{session.title}}</span>
+                    </div>
+                    <div>
+                        {{#each presenter in session.presenters}}
+                            {{link-to presenter.name "speaker" presenter}}
+                        {{/each}}
+                    </div>
+                    <div>
+                        {{#link-to "session" session class="btn btn-default btn-mini"}}
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                        {{/link-to}}
+                        {{track-square track=session.track.name small="true"}}
+                    </div>
+                    <div>
+                        <div>
+                            <strong>Track:</strong>
+                            {{session.track.name}}
                         </div>
                         <div>
-                            {{#each presenter in session.presenters}}
-                                {{link-to presenter.name "speaker" presenter}}
-                            {{/each}}
+                            <strong>Room:</strong>
+                            {{session.room}}
                         </div>
                         <div>
-                            {{track-square track=session.track.name}}
+                            <strong>Time:</strong>
+                            {{friendly-time session.startTime}} - {{friendly-time session.endTime}}
                         </div>
                     </div>
+                </div>
 
-                {{/each}}
-
-            </div>
+            {{/each}}
 
         </div>
 
-    {{/each}}
+    </div>
 
-</div>
+{{/each}}

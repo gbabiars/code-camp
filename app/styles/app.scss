@@ -43,10 +43,14 @@ $sideLength: 32px;
 
 .card {
   display: block;
-  max-width: 18%;
-  min-width: 200px;
+  width: 270px;
   border: 1px solid #c7c7c7;
   border-radius: 5px;
   margin: 5px;
   padding: 5px;
+
+  .btn {
+    vertical-align: top;
+    line-height: inherit;
+  }
 }
