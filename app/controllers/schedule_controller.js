@@ -1,4 +1,5 @@
 CC.ScheduleController = Em.ArrayController.extend({
+
     groupedSessions: function() {
         var result = Em.A([]),
             sessions = this.get('model');
